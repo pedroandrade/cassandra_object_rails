@@ -3,5 +3,8 @@ module CassandraObject
     rake_tasks do
       load 'cassandra_object/tasks/ks.rake'
     end
+
+    initializer 'my_railtie.configure_rails_initialization' do |app|
+    end
   end
 end
