@@ -10,6 +10,7 @@ module CassandraObject
     end
 
     def configure!
+      return if config_hash.nil?
       CassandraObject::Base.config(config_hash)
     end
 
@@ -17,6 +18,7 @@ module CassandraObject
 
       def config_hash
         @config ||= YAML.load_file("#{Rails.root.to_s}/config/cassandra.yml")[Rails.env]
+      rescue Errno::ENOENT, NoMethodError
       end
 
   end
