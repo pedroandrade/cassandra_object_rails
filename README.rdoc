@@ -1,14 +1,14 @@
-= Cassandra Object Rails
+== Cassandra Object Rails
 
 Cassandra Object uses ActiveModel to mimic much of the behavior in ActiveRecord.
 
-== Installation
+=== Installation
 
 Add the following to your Gemfile:
 
   gem 'cassandra_object_rails'
 
-== Defining Models
+=== Defining Models
 
   class Widget < CassandraObject::Base
     string :name
@@ -23,7 +23,7 @@ Add the following to your Gemfile:
     end
   end
 
-== Connecting to the Server
+=== Connecting to the Server
 
   CassandraObject::Base.config = {
     keyspace: 'my_app_development',
@@ -34,7 +34,7 @@ Add the following to your Gemfile:
     }
   }
 
-== Connecting your rails application with Cassandra
+=== Connecting your rails application with Cassandra
 
   in your config/cassandra.yml
 
@@ -51,7 +51,7 @@ Add the following to your Gemfile:
     servers: '127.0.0.1:9160'
 
 
-== Creating and updating records
+=== Creating and updating records
 
 Cassandra Object has equivalent methods as ActiveRecord:
 
@@ -65,7 +65,7 @@ Cassandra Object has equivalent methods as ActiveRecord:
   widget.save
   widget.save!
 
-== Finding records
+=== Finding records
 
   widget = Widget.find(uuid)
   widget = Widget.first
@@ -74,7 +74,7 @@ Cassandra Object has equivalent methods as ActiveRecord:
     ...
   end
 
-== Query
+=== Query
 
 Some lightweight scoping features are available:
 
@@ -82,7 +82,7 @@ Some lightweight scoping features are available:
   Widget.select(['name', 'color'])
   Widget.limit(10)
 
-== Keyspace
+=== Keyspace
 
 Creating cassandra keyspace defined on cassandra.yml
 
@@ -92,6 +92,6 @@ Droping cassandra keyspace
 
   rake cassandra:drop
 
-== Adding column family
+=== Adding column family
 
   CassandraObject::Schema.create_column_family 'Widgets'
