@@ -1,6 +1,3 @@
-require 'yaml'
-require 'errors'
-require 'base'
 module CassandraObject
 
   class RailsInitializer
@@ -11,7 +8,10 @@ module CassandraObject
 
     def configure!
       return if config_hash.nil?
-      CassandraObject::Base.config(config_hash)
+      CassandraObject::Base.config = {
+        keyspace: config_hash['keyspace'],
+        servers:  config_hash['servers']
+      }
     end
 
     private

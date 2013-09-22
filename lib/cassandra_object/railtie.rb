@@ -1,5 +1,3 @@
-require 'rails_initializer'
-
 module CassandraObject
   class Railtie < Rails::Railtie
     rake_tasks do
