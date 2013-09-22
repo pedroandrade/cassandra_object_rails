@@ -8,7 +8,7 @@ Cassandra Object uses ActiveModel to mimic much of the behavior in ActiveRecord.
 
 Add the following to your Gemfile:
 
-  gem 'gotime-cassandra_object'
+  gem 'cassandra_object_rails'
 
 Change the version of Cassandra accordingly. Recent versions have not been backward compatible.
 
