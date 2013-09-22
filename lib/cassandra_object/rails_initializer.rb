@@ -7,17 +7,14 @@ module CassandraObject
     end
 
     def configure!
-      return if config_hash.nil?
-      CassandraObject::Base.config = {
-        keyspace: config_hash['keyspace'],
-        servers:  config_hash['servers']
-      }
+      return if cassandra_configs.nil?
+      CassandraObject::Config.new cassandra_configs[Rails.env || 'development']
     end
 
     private
 
-      def config_hash
-        @config ||= YAML.load_file("#{Rails.root.to_s}/config/cassandra.yml")[Rails.env]
+      def cassandra_configs
+        @config ||= cassandra_configs = YAML.load_file(Rails.root.join('config', 'cassandra.yml'))
       rescue Errno::ENOENT, NoMethodError
       end
 

@@ -3,11 +3,6 @@ gemspec
 
 gem 'rake'
 gem 'mocha'
-
-group :test do
-  gem 'rails'
-  gem 'thin'
-end
 # group :development, :test do
 #   gem 'pry'
 # end
