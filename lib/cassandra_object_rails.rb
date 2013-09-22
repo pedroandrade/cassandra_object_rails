@@ -61,3 +61,4 @@ module CassandraObject
 end
 
 require 'cassandra_object/railtie' if defined?(Rails)
+require 'cassandra_object/rails_initializer' if defined?(Rails)

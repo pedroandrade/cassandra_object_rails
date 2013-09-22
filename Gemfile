@@ -3,7 +3,6 @@ gemspec
 
 gem 'rake'
 gem 'mocha'
-
 # group :development, :test do
 #   gem 'pry'
 # end
