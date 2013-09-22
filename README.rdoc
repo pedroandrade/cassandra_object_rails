@@ -1,6 +1,4 @@
-= Cassandra Object
-{<img src="https://secure.travis-ci.org/data-axle/cassandra_object.png?rvm=1.9.3" />}[http://travis-ci.org/data-axle/cassandra_object]
-{<img src="https://codeclimate.com/github/data-axle/cassandra_object.png" />}[https://codeclimate.com/github/data-axle/cassandra_object]
+= Cassandra Object Rails
 
 Cassandra Object uses ActiveModel to mimic much of the behavior in ActiveRecord.
 
@@ -9,8 +7,6 @@ Cassandra Object uses ActiveModel to mimic much of the behavior in ActiveRecord.
 Add the following to your Gemfile:
 
   gem 'cassandra_object_rails'
-
-Change the version of Cassandra accordingly. Recent versions have not been backward compatible.
 
 == Defining Models
 
@@ -38,6 +34,23 @@ Change the version of Cassandra accordingly. Recent versions have not been backw
     }
   }
 
+== Connecting your rails application with Cassandra
+
+  in your config/cassandra.yml
+
+  development:
+    keyspace: 'my_app_development'
+    servers: '127.0.0.1:9160'
+
+  test:
+    keyspace: 'my_app_development'
+    servers: '127.0.0.1:9160'
+
+  production:
+    keyspace: 'my_app_development'
+    servers: '127.0.0.1:9160'
+
+
 == Creating and updating records
 
 Cassandra Object has equivalent methods as ActiveRecord:
@@ -61,10 +74,24 @@ Cassandra Object has equivalent methods as ActiveRecord:
     ...
   end
 
-== Scoping
+== Query
 
 Some lightweight scoping features are available:
 
   Widget.where('color' => 'red')
   Widget.select(['name', 'color'])
   Widget.limit(10)
+
+== Keyspace
+
+Creating cassandra keyspace defined on cassandra.yml
+
+  rake cassandra:create
+
+Droping cassandra keyspace
+
+  rake cassandra:drop
+
+== Adding column family
+
+  CassandraObject::Schema.create_column_family 'Widgets'
