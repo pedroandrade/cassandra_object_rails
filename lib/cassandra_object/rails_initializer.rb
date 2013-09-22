@@ -14,7 +14,7 @@ module CassandraObject
     private
 
       def cassandra_configs
-        @config ||= YAML.load_file("#{Rails.root.to_s}/config/cassandra.yml")[Rails.env]
+        @config ||= YAML.load_file(Rails.root.join('config', 'cassandra.yml'))
       end
 
   end
